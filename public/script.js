@@ -5,10 +5,15 @@ const myPeer = new Peer(undefined, {
   host: '/',
   port: '443',
 });
+
 let myVideoStream;
+
 const myVideo = document.createElement('video');
+
 myVideo.muted = true;
+
 const peers = {};
+
 navigator.mediaDevices
   .getUserMedia({
     video: true,
@@ -37,8 +42,11 @@ navigator.mediaDevices
         text.val('');
       }
     });
+
+    var name = prompt('Whats your name?');
+
     socket.on('createMessage', (message) => {
-      $('ul').append(`<li class="message"><b>user</b><br/>${message}</li>`);
+      $('ul').append(`<li class="message"><b>${name}</b><br/>${message}</li>`);
       scrollToBottom();
     });
   });
